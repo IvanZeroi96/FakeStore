@@ -14,15 +14,27 @@ class Localizationes {
 
   static final Map<String, Map<String, String>> _localizedValues = {
     'en': {
-      'Hello': 'Hello World',
+      'SingIn': 'Sing In',
+      'Login' : 'Login',
+      'Email' : 'Email',
     },
     'es': {
-      'Hello': 'Hola Mundo',
+      'Login': 'Iniciar sesión',
+      'SingIn' : 'Registrarse',
+      'Email' : 'Correo',
     },
   };
 
-  String get hello {
-    return _localizedValues[locale.languageCode]!['Hello'] ?? '';
+  String get singIn {
+    return _localizedValues[locale.languageCode]!['SingIn'] ?? '';
+  }
+
+  String get login {
+    return _localizedValues[locale.languageCode]!['Login'] ?? '';
+  }
+
+  String get email {
+    return _localizedValues[locale.languageCode]!['Email'] ?? '';
   }
 }
 
