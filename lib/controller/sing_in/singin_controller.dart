@@ -1,9 +1,13 @@
+import 'package:fakestore/model/constants.dart';
+import 'package:fakestore/model/errors.dart';
+import 'package:fakestore/model/network/StatusController.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class SingInController extends GetxController {
+class SingInController extends FSGetXController {
   bool _isCompleteForm = false;
   bool _isVisibilityPass = false;
+  bool _isLoading = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
@@ -11,6 +15,7 @@ class SingInController extends GetxController {
 
   bool get isCompleteForm => _isCompleteForm;
   bool get isVisibilityPass => _isVisibilityPass;
+  bool get isLoading => _isLoading;
   GlobalKey<FormState> get formKey => _formKey;
   TextEditingController get controllerName => _controllerName;
   TextEditingController get controllerEmail => _controllerEmail;
@@ -70,5 +75,25 @@ class SingInController extends GetxController {
     update(['BtnSingIn']);
   }
 
-  void onSingIn() {}
+  void onSingIn() async {
+    _isLoading = true;
+    update();
+    FocusScope.of(Get.context!).requestFocus(FocusNode());
+    JsonResponse response = await post(
+      EndPoint.singIn,
+      params: {
+        'username': _controllerName.text.trim(),
+        'password': _controllerPass.text.trim(),
+        'email' : _controllerEmail.text.trim(),
+      },
+    );
+    if(response.statusCode == 200){
+      Get.offAllNamed('/login');
+      Get.snackbar("¡Genial!", 'Usuario registrado correcto con id: ');
+    }else{
+      Errors().errors(response.statusCode,message: 'Algun dato incorrecto.');
+    }
+    _isLoading = false;
+    update();
+  }
 }

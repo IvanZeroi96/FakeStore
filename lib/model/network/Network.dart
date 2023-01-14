@@ -39,7 +39,7 @@ class Network {
           debugPrint(response.body.replaceAll('\'', ''));
           json = jsonDecode(response.body.replaceAll('\'', ''));
         } else {
-          debugPrint("Ha ocurrido un error:");
+          debugPrint('Ha ocurrido un error:');
           debugPrint(response.statusCode.toString());
           json = {};
         }
@@ -47,6 +47,49 @@ class Network {
           statusCode: response.statusCode,
           response: json,
           message: response.reasonPhrase.toString()
+        );
+      });
+    } catch (_) {
+      debugPrint(_.toString());
+    }
+    return responseJson;
+  }
+
+  Future<JsonObjectResponse> get(
+      String endPoint, {
+        Map<String, dynamic> params = const {},
+      }) async {
+    var json;
+    JsonObjectResponse responseJson = JsonObjectResponse();
+    if(params.isNotEmpty){
+      _content = '?${(params.keys.map((key) => '$key=${Uri.encodeQueryComponent(params[key])}')).join('&')}';
+    }
+
+    try {
+      final Map<String, String> headers = {
+        'Content-Type': 'application/json',
+      };
+
+      debugPrint('${WebService.urlBase}$endPoint$_content');
+
+      await http
+          .get(
+        Uri.parse('${WebService.urlBase}$endPoint$_content'),
+        headers: headers,
+      )
+          .then((response) {
+        if (response.statusCode == 200) {
+          debugPrint(response.body.replaceAll('\'', ''));
+          json = jsonDecode(response.body);
+        } else {
+          debugPrint('Ha ocurrido un error:');
+          debugPrint(response.statusCode.toString());
+          json = {};
+        }
+        responseJson = JsonObjectResponse(
+            statusCode: response.statusCode,
+            response: json,
+            message: response.reasonPhrase.toString()
         );
       });
     } catch (_) {

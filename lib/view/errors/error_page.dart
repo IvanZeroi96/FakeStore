@@ -13,7 +13,9 @@ class ErrorPage extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           body: Center(
-            child: Card(
+            child: SizedBox(
+              width: 340,
+              height: 340,
               child: Column(
                 children: [
                   Image.asset(
@@ -21,7 +23,7 @@ class ErrorPage extends StatelessWidget {
                     height: 200,
                     width: 200,
                   ),
-                  Text(_.mensaje),
+                  Text(_.mensaje,style: const TextStyle().copyWith(fontSize: 20),),
                 ],
               ),
             ),

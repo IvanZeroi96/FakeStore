@@ -41,6 +41,8 @@ dependencies:
   get: ^4.6.5
   shared_preferences: ^2.0.16
   http: ^0.13.5
+  modal_progress_hud_nsn: ^0.3.0
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

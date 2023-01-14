@@ -11,8 +11,8 @@ class ErrorController extends FSGetXController{
 
   @override
   void onInit() {
-    if(Get.parameters['StatusCode'] != null){
-      _statusCode = int.tryParse(Get.parameters['StatusCode']!)!;
+    if(Get.arguments['StatusCode'] != null){
+      _statusCode = int.tryParse(Get.arguments['StatusCode']!)!;
     }
     _evaluateCode();
 
@@ -22,7 +22,7 @@ class ErrorController extends FSGetXController{
   void _evaluateCode(){
     switch(_statusCode){
       case 401:
-        _mensaje = 'Tu contrasña o usuario son incorrectos';
+        _mensaje = 'Tu contraseña o usuario son incorrectos';
         break;
     }
   }

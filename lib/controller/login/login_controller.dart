@@ -1,17 +1,21 @@
 import 'package:fakestore/model/constants.dart';
+import 'package:fakestore/model/errors.dart';
 import 'package:fakestore/model/network/StatusController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends FSGetXController {
   bool _isCompleteForm = false;
   bool _isVisibilityPass = false;
+  bool _isLoading = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerPass = TextEditingController();
 
   bool get isCompleteForm => _isCompleteForm;
   bool get isVisibilityPass => _isVisibilityPass;
+  bool get isLoading => _isLoading;
   GlobalKey<FormState> get formKey => _formKey;
   TextEditingController get controllerName => _controllerName;
   TextEditingController get controllerPass => _controllerPass;
@@ -58,7 +62,9 @@ class LoginController extends FSGetXController {
   }
 
   void onLogin() async {
-
+    _isLoading = true;
+    update();
+    FocusScope.of(Get.context!).requestFocus(FocusNode());
     JsonResponse response = await post(
       EndPoint.login,
       params: {
@@ -67,13 +73,23 @@ class LoginController extends FSGetXController {
       },
     );
     if(response.statusCode == 200){
+      _loginFinish(true);
       Get.offAllNamed('/home');
     }else{
-      Get.toNamed('/error',parameters: {'StatusCode' : response.statusCode.toString()});
+      _loginFinish(false);
+      Errors().errors(response.statusCode,message: 'Tu contraseña o usuario son incorrectos');
     }
+    _isLoading = false;
+    update();
   }
 
   void goToSingIn() {
+    FocusScope.of(Get.context!).requestFocus(FocusNode());
     Get.toNamed('/singin');
+  }
+
+  void _loginFinish(bool success) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setBool(Persistence.isLogged, success);
   }
 }
