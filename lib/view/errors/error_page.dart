@@ -13,10 +13,17 @@ class ErrorPage extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           body: Center(
-            child: Column(
-              children: [
-
-              ],
+            child: Card(
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/images/Unthorized.png',
+                    height: 200,
+                    width: 200,
+                  ),
+                  Text(_.mensaje),
+                ],
+              ),
             ),
           ),
         );

@@ -30,5 +30,6 @@ final routes = [
     name: '/error',
     page: () => const ErrorPage(),
     transition: Transition.cupertinoDialog,
+    fullscreenDialog: true,
   ),
 ];

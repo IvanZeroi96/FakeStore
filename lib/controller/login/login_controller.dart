@@ -1,5 +1,4 @@
 import 'package:fakestore/model/constants.dart';
-import 'package:fakestore/model/network/Network.dart';
 import 'package:fakestore/model/network/StatusController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,24 +15,6 @@ class LoginController extends FSGetXController {
   GlobalKey<FormState> get formKey => _formKey;
   TextEditingController get controllerName => _controllerName;
   TextEditingController get controllerPass => _controllerPass;
-
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    // TODO: implement onReady
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
-  }
 
   void changePasswordVisibility() {
     _isVisibilityPass = !_isVisibilityPass;
@@ -88,7 +69,7 @@ class LoginController extends FSGetXController {
     if(response.statusCode == 200){
       Get.offAllNamed('/home');
     }else{
-      Get.toNamed('/error');
+      Get.toNamed('/error',parameters: {'StatusCode' : response.statusCode.toString()});
     }
   }
 

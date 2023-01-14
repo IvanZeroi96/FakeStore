@@ -16,24 +16,6 @@ class SingInController extends GetxController {
   TextEditingController get controllerEmail => _controllerEmail;
   TextEditingController get controllerPass => _controllerPass;
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    // TODO: implement onReady
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
-  }
-
   void changePasswordVisibility() {
     _isVisibilityPass = !_isVisibilityPass;
     update(['Password']);

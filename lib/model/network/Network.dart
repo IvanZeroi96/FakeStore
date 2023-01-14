@@ -46,6 +46,7 @@ class Network {
         responseJson = JsonResponse(
           statusCode: response.statusCode,
           response: json,
+          message: response.reasonPhrase.toString()
         );
       });
     } catch (_) {
