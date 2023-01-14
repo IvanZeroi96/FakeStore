@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fakestore/controller/home/home_controller.dart';
 import 'package:fakestore/model/utils.dart';
+import 'package:fakestore/view/ui/circular_progress.dart';
 import 'package:fakestore/view/ui/progress_hud.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,8 +17,8 @@ class HomePage extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Image.network(
-              Utils().imageLogo,
+            title: Image.asset(
+              Utils().imageLogoAsset,
               width: 50,
               height: 50,
             ),
@@ -39,7 +40,9 @@ class HomePage extends StatelessWidget {
                   onTap: () => _.onCloseSession(),
                   title: Column(
                     children: [
-                      const SizedBox(height: 60,),
+                      const SizedBox(
+                        height: 60,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
@@ -77,10 +80,23 @@ class HomePage extends StatelessWidget {
                             child: Column(
                               children: [
                                 CachedNetworkImage(
-                                  width: double.maxFinite,height: 130.0,fit: BoxFit.scaleDown,
+                                  width: double.maxFinite,
+                                  height: 130.0,
+                                  fit: BoxFit.scaleDown,
                                   imageUrl: _.products[index].image!,
-                                  placeholder: (context, url) => const CircularProgressIndicator(),
-                                  errorWidget: (context, url, error) => Image.asset('assets/images/sinimagen.png', height: 30,fit: BoxFit.cover,),
+                                  placeholder: (context, url) => SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: CircularProgress(
+                                        width: 20,
+                                        height: 20,
+                                      )),
+                                  errorWidget: (context, url, error) =>
+                                      Image.asset(
+                                    'assets/images/sinimagen.png',
+                                    height: 30,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                                 ListTile(
                                   subtitle: Text(_.products[index].title!,
