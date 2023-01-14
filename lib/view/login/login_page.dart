@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
                           color: Colors.grey.shade200,
                           child: TextFormField(
                             cursorColor: Colors.black,
-                            decoration: _decorationText(),
+                            decoration: _decorationEmail(),
                           ),
                         ),
                         const SizedBox(
@@ -58,14 +58,14 @@ class LoginPage extends StatelessWidget {
                           height: 10,
                         ),
                         OutlinedButton(
-                          onPressed: () {},
+                          onPressed: _.isCompleteForm ? () {} : null,
                           child: Text(Localizationes.of(context)!.login),
                         ),
                         const SizedBox(
                           height: 18,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () => _.goToSingIn(),
                           child: Text(
                             Localizationes.of(context)!.singIn,
                           ),
@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  InputDecoration _decorationText(){
+  InputDecoration _decorationEmail(){
     return const InputDecoration(
       labelText: 'Correo electronico',
       contentPadding: EdgeInsets.symmetric(
