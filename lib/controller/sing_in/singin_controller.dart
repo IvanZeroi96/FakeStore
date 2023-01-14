@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class SingInController extends GetxController {
-
   bool _isCompleteForm = false;
   bool _isVisibilityPass = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -71,6 +70,7 @@ class SingInController extends GetxController {
   void onChangeUserName(String? value) {
     _validateBtnContinuar();
   }
+
   void onChangeEmail(String? value) {
     _validateBtnContinuar();
   }
@@ -79,12 +79,14 @@ class SingInController extends GetxController {
     _validateBtnContinuar();
   }
 
-  void _validateBtnContinuar(){
-    if(_formKey.currentState!.validate()){
+  void _validateBtnContinuar() {
+    if (_formKey.currentState!.validate()) {
       _isCompleteForm = true;
-    }else{
+    } else {
       _isCompleteForm = false;
     }
-    update(['BtnRegister']);
+    update(['BtnSingIn']);
   }
+
+  void onSingIn() {}
 }

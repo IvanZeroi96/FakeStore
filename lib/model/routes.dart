@@ -1,3 +1,4 @@
+import 'package:fakestore/view/errors/error_page.dart';
 import 'package:fakestore/view/home/home_page.dart';
 import 'package:fakestore/view/login/login_page.dart';
 import 'package:fakestore/view/sing_in/singin_page.dart';
@@ -23,5 +24,11 @@ final routes = [
     name: '/home',
     page: () => const HomePage(),
     transition: Transition.rightToLeftWithFade,
+  ),
+
+  GetPage(
+    name: '/error',
+    page: () => const ErrorPage(),
+    transition: Transition.cupertinoDialog,
   ),
 ];
