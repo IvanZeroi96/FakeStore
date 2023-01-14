@@ -13,8 +13,8 @@ class SplashPage extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           body: Center(
-            child: Image.network(
-              Utils().imageLogo,
+            child: Image.asset(
+              Utils().imageLogoAsset,
               width: 200,
               height: 200,
             ),

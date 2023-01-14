@@ -79,7 +79,7 @@ class SingInController extends FSGetXController {
     _isLoading = true;
     update();
     FocusScope.of(Get.context!).requestFocus(FocusNode());
-    JsonResponse response = await post(
+    JsonResponseSingIn response = await postSingIn(
       EndPoint.singIn,
       params: {
         'username': _controllerName.text.trim(),
@@ -89,7 +89,7 @@ class SingInController extends FSGetXController {
     );
     if(response.statusCode == 200){
       Get.offAllNamed('/login');
-      Get.snackbar("¡Genial!", 'Usuario registrado correcto con id: ');
+      Get.snackbar("¡Genial!", 'Usuario registrado correcto con id: ${response.response!.id ?? ''}');
     }else{
       Errors().errors(response.statusCode,message: 'Algun dato incorrecto.');
     }

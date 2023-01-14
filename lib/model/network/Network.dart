@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:fakestore/model/constants.dart';
 import 'package:fakestore/model/network/StatusController.dart';
 import 'package:flutter/material.dart';
@@ -68,9 +69,11 @@ class Network {
     try {
       final Map<String, String> headers = {
         'Content-Type': 'application/json',
+        HttpHeaders.authorizationHeader : 'Bearer ${TokenJwk.jwk}',
       };
 
       debugPrint('${WebService.urlBase}$endPoint$_content');
+      debugPrint('-> ${TokenJwk.jwk}');
 
       await http
           .get(

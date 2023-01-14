@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fakestore/controller/home/home_controller.dart';
 import 'package:fakestore/model/utils.dart';
 import 'package:fakestore/view/ui/progress_hud.dart';
@@ -75,11 +76,11 @@ class HomePage extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               children: [
-                                Image.network(
-                                  _.products[index].image!,
-                                  fit: BoxFit.scaleDown,
-                                  height: 130.0,
-                                  width: double.maxFinite,
+                                CachedNetworkImage(
+                                  width: double.maxFinite,height: 130.0,fit: BoxFit.scaleDown,
+                                  imageUrl: _.products[index].image!,
+                                  placeholder: (context, url) => const CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) => Image.asset('assets/images/sinimagen.png', height: 30,fit: BoxFit.cover,),
                                 ),
                                 ListTile(
                                   subtitle: Text(_.products[index].title!,

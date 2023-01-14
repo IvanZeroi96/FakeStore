@@ -30,8 +30,8 @@ class SingInPage extends StatelessWidget {
                         padding: const EdgeInsets.all(12.0),
                         child: Column(
                           children: [
-                            Image.network(
-                              Utils().imageLogo,
+                            Image.asset(
+                              Utils().imageLogoAsset,
                               width: 90,
                               height: 90,
                             ),

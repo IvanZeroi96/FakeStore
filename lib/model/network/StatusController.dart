@@ -1,18 +1,36 @@
 
 import 'package:fakestore/model/network/Network.dart';
 import 'package:fakestore/model/products/products.dart';
+import 'package:fakestore/model/singin/singin.dart';
+import 'package:fakestore/model/token/token.dart';
 import 'package:get/get.dart';
 
 abstract class FSGetXController extends GetxController {
 
-  Future<JsonResponse> post(endPoint,{Map<String,dynamic> params = const {}}) async{
+  Future<JsonResponseToken> postToken(endPoint,{Map<String,dynamic> params = const {}}) async{
+    JsonResponseToken responseObj = JsonResponseToken();
     final network = Network();
     final JsonResponse response = await network.post(endPoint,params: params);
-    return response;
+    Token token = Token.fromJson(response.response);
+    responseObj.statusCode = response.statusCode;
+    responseObj.message = response.message;
+    responseObj.response = token;
+    return responseObj;
   }
 
-  Future<JsonResponseObject> getProductos(endPoint,{Map<String,dynamic> params = const {}}) async{
-    JsonResponseObject response = JsonResponseObject();
+  Future<JsonResponseSingIn> postSingIn(endPoint,{Map<String,dynamic> params = const {}}) async{
+    JsonResponseSingIn responseObj = JsonResponseSingIn();
+    final network = Network();
+    final JsonResponse response = await network.post(endPoint,params: params);
+    SingIn singIn = SingIn.fromJson(response.response);
+    responseObj.statusCode = response.statusCode;
+    responseObj.message = response.message;
+    responseObj.response = singIn;
+    return responseObj;
+  }
+
+  Future<JsonResponseList> getProductos(endPoint,{Map<String,dynamic> params = const {}}) async{
+    JsonResponseList response = JsonResponseList();
     final network = Network();
     final JsonObjectResponse responseJson = await network.get(endPoint,params: params);
     if(responseJson.statusCode == 200){
@@ -41,6 +59,30 @@ class JsonResponse {
   });
 }
 
+class JsonResponseToken {
+  String message;
+  int statusCode;
+  Token? response;
+
+  JsonResponseToken({
+    this.message = '',
+    this.statusCode = 0,
+    this.response,
+  });
+}
+
+class JsonResponseSingIn {
+  String message;
+  int statusCode;
+  SingIn? response;
+
+  JsonResponseSingIn({
+    this.message = '',
+    this.statusCode = 0,
+    this.response,
+  });
+}
+
 class JsonObjectResponse {
   String message;
   int statusCode;
@@ -53,12 +95,12 @@ class JsonObjectResponse {
   });
 }
 
-class JsonResponseObject {
+class JsonResponseList {
   String message;
   int statusCode;
   List<Product> response;
 
-  JsonResponseObject({
+  JsonResponseList({
     this.message = '',
     this.statusCode = 0,
     this.response = const [],

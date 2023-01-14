@@ -21,7 +21,7 @@ class HomeController extends FSGetXController {
   }
 
   Future<void> _getProducts() async {
-    JsonResponseObject response = await getProductos(
+    JsonResponseList response = await getProductos(
       EndPoint.products,
       params: _isAsc ? {'sort': 'desc'} : {},
     );
@@ -47,6 +47,8 @@ class HomeController extends FSGetXController {
   void onCloseSession() {
     SharedPreferences.getInstance().then((preferences) {
       preferences.setBool(Persistence.isLogged, false);
+      preferences.setString(Persistence.user, '');
+      preferences.setString(Persistence.pass, '');
       Get.offAllNamed('/login');
     });
   }

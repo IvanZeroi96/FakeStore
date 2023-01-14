@@ -65,7 +65,7 @@ class LoginController extends FSGetXController {
     _isLoading = true;
     update();
     FocusScope.of(Get.context!).requestFocus(FocusNode());
-    JsonResponse response = await post(
+    JsonResponseToken response = await postToken(
       EndPoint.login,
       params: {
         'username': _controllerName.text.trim(),
@@ -74,6 +74,7 @@ class LoginController extends FSGetXController {
     );
     if(response.statusCode == 200){
       _loginFinish(true);
+      TokenJwk.jwk = response.response!.token!;
       Get.offAllNamed('/home');
     }else{
       _loginFinish(false);
@@ -91,5 +92,7 @@ class LoginController extends FSGetXController {
   void _loginFinish(bool success) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setBool(Persistence.isLogged, success);
+    preferences.setString(Persistence.user, _controllerName.text.trim());
+    preferences.setString(Persistence.pass, _controllerPass.text.trim());
   }
 }
