@@ -1,3 +1,4 @@
+import 'package:fakestore/view/detail_product/detail_product_page.dart';
 import 'package:fakestore/view/errors/error_page.dart';
 import 'package:fakestore/view/home/home_page.dart';
 import 'package:fakestore/view/login/login_page.dart';
@@ -25,7 +26,11 @@ final routes = [
     page: () => const HomePage(),
     transition: Transition.rightToLeftWithFade,
   ),
-
+  GetPage(
+    name: '/detail_product',
+    page: () => const DetailProductPage(),
+    transition: Transition.rightToLeftWithFade,
+  ),
   GetPage(
     name: '/error',
     page: () => const ErrorPage(),

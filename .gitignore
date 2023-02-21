@@ -1,28 +1,40 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-migrate_working_dir/
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@IvanZeroi96 
+SeekopEnterprise
+/
+SeekopMobile
+Private
+Cannot fork because forking is disabled.
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+SeekopMobile/.gitignore
+@erickrodriguez21
+erickrodriguez21 Configurando archivo .gitignore
+Latest commit 4eb4303 2 weeks ago
+ History
+ 1 contributor
+90 lines (72 sloc)  1.11 KB
 
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
+build/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+.dart_tool/
+.packages
+pubspec.lock # library relate lock files
 
-# Flutter/Dart/Pub related
-**/doc/api/
+**/doc/API/
 **/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins
@@ -30,15 +42,79 @@ migrate_working_dir/
 .packages
 .pub-cache/
 .pub/
-/build/
 
-# Symbolication related
-app.*.symbols
+*.iml
+*.ipr
+*.iws
+.idea/
 
-# Obfuscation related
-app.*.map.json
+.classpath
+.project
+.settings/
+.vscode/
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+**/android/**/gradle-wrapper.jar
+.gradle/
+**/android/captures/
+**/android/gradlew.bat
+**/android/gradlew
+**/android/local.properties
+**/android/key.properties
+*.jks
+
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/ephemeral
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+
+.DS_Store
+.dart_tool/
+
+.packages
+.pub/
+
+.idea/
+.vagrant/
+.sconsign.dblite
+.svn/
+
+*.swp
+profile
+
+DerivedData/
+
+.generated/
+
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+xcuserdata
+
+*.moved-aside
+
+*.pyc
+*sync/
+Icon?
+.tags*
+
+build/
+.android/
+.ios/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
