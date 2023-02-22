@@ -2,6 +2,10 @@
 
 A Flutter e-commerce app
 
+## OS
+1. Android
+2. IOS
+
 ## Framework and language
 1. Flutter
 2. Dart
@@ -31,3 +35,10 @@ fetch('https://fakestoreapi.com/products')
 fetch('https://fakestoreapi.com/products/1')
             .then(res=>res.json())
             .then(json=>console.log(json))
+
+## Images
+![Thumbnail](thumbnail.png)
+
+##Authors
+- [@IvanZeroi96](https://github.com/IvanZeroi96)
+
