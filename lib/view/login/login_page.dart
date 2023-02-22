@@ -89,7 +89,7 @@ class LoginPage extends StatelessWidget {
                                           ? () => _.onLogin()
                                           : null,
                                       child: Text(
-                                        Localizationes.of(context)!.login,
+                                        S.of(context)!.login,
                                         style: const TextStyle().copyWith(
                                           color: FSColors.purple,
                                         ),
@@ -102,7 +102,7 @@ class LoginPage extends StatelessWidget {
                               InkWell(
                                 onTap: () => _.goToSingIn(),
                                 child: Text(
-                                  Localizationes.of(context)!.singIn,
+                                  S.of(context)!.singIn,
                                 ),
                               ),
                               const SizedBox(

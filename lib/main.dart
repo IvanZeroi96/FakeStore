@@ -1,9 +1,11 @@
+import 'dart:ui';
+
 import 'package:fakestore/model/colors.dart';
 import 'package:fakestore/model/l10n/l10n.dart';
 import 'package:fakestore/model/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +30,21 @@ class MyApp extends StatelessWidget {
           ),
           iconTheme: IconThemeData(
             color: FSColors.purple,
-          )
+          ),
+        ),
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(
+            fontFamily: 'Montserrat',
+            color: FSColors.purple,
+            fontSize: 16,
+            fontStyle: FontStyle.normal,
+          ),
+          headline1: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 30,
+            color: FSColors.purple,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         hintColor: FSColors.purple,
         shadowColor: FSColors.purple,
@@ -46,6 +62,16 @@ class MyApp extends StatelessWidget {
           focusedErrorBorder: InputBorder.none,
           iconColor: FSColors.purple,
         ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            //backgroundColor: FSColors.purple,
+            foregroundColor: FSColors.purple,
+            shadowColor: FSColors.purple,
+            side: const BorderSide(
+              color: FSColors.purple,
+            ),
+          ),
+        ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: FSColors.purple,
         ),
@@ -61,13 +87,13 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
-        Localizationes.delegate,
+        S.delegate,
       ],
       supportedLocales: const [
-        Locale('es','ES'),
-        Locale('en','US'),
+        Locale('es', 'ES'),
+        Locale('en', 'US'),
       ],
-      initialRoute: '/',
+      initialRoute: '/presentation',
       getPages: routes,
     );
   }

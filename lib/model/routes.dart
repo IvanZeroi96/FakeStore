@@ -2,6 +2,7 @@ import 'package:fakestore/view/detail_product/detail_product_page.dart';
 import 'package:fakestore/view/errors/error_page.dart';
 import 'package:fakestore/view/home/home_page.dart';
 import 'package:fakestore/view/login/login_page.dart';
+import 'package:fakestore/view/presentation/presentation_page.dart';
 import 'package:fakestore/view/sing_in/singin_page.dart';
 import 'package:fakestore/view/splash/splash_page.dart';
 import 'package:get/get.dart';
@@ -34,6 +35,12 @@ final routes = [
   GetPage(
     name: '/error',
     page: () => const ErrorPage(),
+    transition: Transition.cupertinoDialog,
+    fullscreenDialog: true,
+  ),
+  GetPage(
+    name: '/presentation',
+    page: () => const PresentationPage(),
     transition: Transition.cupertinoDialog,
     fullscreenDialog: true,
   ),

@@ -99,7 +99,7 @@ class SingInPage extends StatelessWidget {
                                         ? () => _.onSingIn()
                                         : null,
                                     child: Text(
-                                      Localizationes.of(context)!.singIn,
+                                      S.of(context)!.singIn,
                                       style: const TextStyle().copyWith(
                                         color: FSColors.purple,
                                       ),
