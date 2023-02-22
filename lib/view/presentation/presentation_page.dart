@@ -25,7 +25,7 @@ class PresentationPage extends StatelessWidget {
                   bottom: 1,
                   right: 20,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => _.goToLogin(),
                     child: Text(
                       S.of(context)!.login,
                       style: Theme.of(context).textTheme.bodyText1,
@@ -36,7 +36,7 @@ class PresentationPage extends StatelessWidget {
                   bottom: 50,
                   right: 20,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => _.goToHome(),
                     child: Text(
                       S.of(context)!.guest,
                       style: Theme.of(context).textTheme.bodyText1,
@@ -44,7 +44,7 @@ class PresentationPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 70,
+                  top: 40,
                   left: 10,
                   child: Text(
                     S.of(context)!.appName,

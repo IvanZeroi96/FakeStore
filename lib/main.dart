@@ -93,7 +93,7 @@ class MyApp extends StatelessWidget {
         Locale('es', 'ES'),
         Locale('en', 'US'),
       ],
-      initialRoute: '/presentation',
+      initialRoute: '/',
       getPages: routes,
     );
   }

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends FSGetXController {
-
   String _user = '';
   String _pass = '';
 
@@ -17,32 +16,38 @@ class SplashController extends FSGetXController {
 
   void _validateLogin() async {
     Future.delayed(const Duration(seconds: 5), () {
-      _isLogged().then((logged) async {
-        if (logged) {
-          if(TokenJwk.jwk.isEmpty){
-            if(_user.isEmpty && _pass.isEmpty){
-              Get.offAllNamed('/login');
-            }else{
-              JsonResponseToken response = await postToken(
-                EndPoint.login,
-                params: {
-                  'username': _user.trim(),
-                  'password': _pass.trim(),
-                },
-              );
-              if(response.statusCode == 200){
-                TokenJwk.jwk = response.response!.token!;
-                Get.offAllNamed('/home');
-              }else{
-                Errors().errors(response.statusCode);
-                Get.offAllNamed('/login');
-              }
-            }
-          }else {
-            Get.offAllNamed('/home');
-          }
+      _isInitialFirst().then((initial) {
+        if (initial) {
+          Get.toNamed('/presentation');
         } else {
-          Get.offAllNamed('/login');
+          _isLogged().then((logged) async {
+            if (logged) {
+              if (TokenJwk.jwk.isEmpty) {
+                if (_user.isEmpty && _pass.isEmpty) {
+                  Get.offAllNamed('/login');
+                } else {
+                  JsonResponseToken response = await postToken(
+                    EndPoint.login,
+                    params: {
+                      'username': _user.trim(),
+                      'password': _pass.trim(),
+                    },
+                  );
+                  if (response.statusCode == 200) {
+                    TokenJwk.jwk = response.response!.token!;
+                    Get.offAllNamed('/home');
+                  } else {
+                    Errors().errors(response.statusCode);
+                    Get.offAllNamed('/login');
+                  }
+                }
+              } else {
+                Get.offAllNamed('/home');
+              }
+            } else {
+              Get.offAllNamed('/login');
+            }
+          });
         }
       });
     });
@@ -55,5 +60,8 @@ class SplashController extends FSGetXController {
     return preferences.getBool(Persistence.isLogged) ?? false;
   }
 
-
+  Future<bool> _isInitialFirst() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getBool(Persistence.isInitialFirst) ?? true;
+  }
 }
