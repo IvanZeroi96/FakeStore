@@ -6,8 +6,11 @@ A Flutter e-commerce app
 1. Android
 2. IOS
 
+## Language Application Support
+English and Spanish
+
 ## Framework and language
-1. Flutter
+1. Flutter v- 3.3.2
 2. Dart
 
 ## Libraries
@@ -35,10 +38,19 @@ fetch('https://fakestoreapi.com/products')
 fetch('https://fakestoreapi.com/products/1')
             .then(res=>res.json())
             .then(json=>console.log(json))
+```
+
+### Get all categories
+``` javascript
+fetch('https://fakestoreapi.com/products/category/jewelery')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+```
+
+## Authors
+- [@IvanZeroi96](https://github.com/IvanZeroi96)
 
 ## Images
-![Thumbnail](thumbnail.png)
-
-##Authors
-- [@IvanZeroi96](https://github.com/IvanZeroi96)
+![Thumbnail1](assets/thumbnail/thumbnail_1.jpg)
+![Thumbnail2](assets/thumbnail/thumbnail_2.jpg)
 
