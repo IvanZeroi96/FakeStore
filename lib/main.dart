@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fakestore/model/colors.dart';
 import 'package:fakestore/model/l10n/l10n.dart';
 import 'package:fakestore/model/routes.dart';
@@ -21,6 +19,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionColor: Colors.transparent,
+          cursorColor: FSColors.purple,
+          selectionHandleColor: FSColors.purple,
+        ),
         appBarTheme: const AppBarTheme(
           centerTitle: true,
           color: Colors.transparent,
@@ -64,7 +67,6 @@ class MyApp extends StatelessWidget {
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
-            //backgroundColor: FSColors.purple,
             foregroundColor: FSColors.purple,
             shadowColor: FSColors.purple,
             side: const BorderSide(
@@ -82,7 +84,7 @@ class MyApp extends StatelessWidget {
           iconColor: FSColors.purple,
         ),
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
