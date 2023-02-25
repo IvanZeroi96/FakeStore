@@ -11,6 +11,7 @@ final routes = [
   GetPage(
     name: '/',
     page: () => const SplashPage(),
+    transition: Transition.circularReveal,
   ),
   GetPage(
     name: '/singin',
@@ -41,7 +42,7 @@ final routes = [
   GetPage(
     name: '/presentation',
     page: () => const PresentationPage(),
-    transition: Transition.cupertinoDialog,
+    transition: Transition.circularReveal,
     fullscreenDialog: true,
   ),
 ];

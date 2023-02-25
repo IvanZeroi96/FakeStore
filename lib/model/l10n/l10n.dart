@@ -14,18 +14,24 @@ class S {
 
   static final Map<String, Map<String, String>> _localizedValues = {
     'en': {
+      'Register': 'Don´t have an account yet? join now',
       'SingIn': 'Sing In',
       'Login': 'Login',
       'Email': 'Email',
       'Guest': 'Guest',
       'AppName': 'Fake Store',
+      'UserName': 'User name',
+      'Password': 'Password',
     },
     'es': {
-      'Login': 'Iniciar sesión',
+      'Register': '¿Todavía no tienes una cuenta? Únete ahora',
       'SingIn': 'Registrarse',
-      'Email': 'Correo',
+      'Login': 'Iniciar sesión',
+      'Email': 'Correo electrónico',
       'Guest': 'Invitado',
       'AppName': 'Fake Store',
+      'UserName': 'Nombre usuario',
+      'Password': 'Contraseña',
     },
   };
 
@@ -47,6 +53,18 @@ class S {
 
   String get guest {
     return _localizedValues[locale.languageCode]!['Guest'] ?? '';
+  }
+
+  String get register {
+    return _localizedValues[locale.languageCode]!['Register'] ?? '';
+  }
+
+  String get userName {
+    return _localizedValues[locale.languageCode]!['UserName'] ?? '';
+  }
+
+  String get password {
+    return _localizedValues[locale.languageCode]!['Password'] ?? '';
   }
 }
 
