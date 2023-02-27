@@ -22,6 +22,7 @@ class S {
       'AppName': 'Fake Store',
       'UserName': 'User name',
       'Password': 'Password',
+      'Buy': 'Buy',
     },
     'es': {
       'Register': '¿Todavía no tienes una cuenta? Únete ahora',
@@ -32,6 +33,7 @@ class S {
       'AppName': 'Fake Store',
       'UserName': 'Nombre usuario',
       'Password': 'Contraseña',
+      'Buy': 'Comprar',
     },
   };
 
@@ -65,6 +67,10 @@ class S {
 
   String get password {
     return _localizedValues[locale.languageCode]!['Password'] ?? '';
+  }
+
+  String get buy {
+    return _localizedValues[locale.languageCode]!['Buy'] ?? '';
   }
 }
 

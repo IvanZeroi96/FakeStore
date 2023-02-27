@@ -52,4 +52,8 @@ class HomeController extends FSGetXController {
       Get.offAllNamed('/login');
     });
   }
+
+  void goToDetailProduct() {
+    Get.toNamed('/detail_product');
+  }
 }

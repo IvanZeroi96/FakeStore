@@ -3,6 +3,7 @@ class Persistence {
   static const String user = "USER";
   static const String pass = "PASS";
   static const String isInitialFirst = "IS_INITIAL";
+  static const String isGuest = "Is_GUEST";
 }
 
 class WebService {

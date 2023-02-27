@@ -50,6 +50,12 @@ class MyApp extends StatelessWidget {
             color: FSColors.purple,
             fontWeight: FontWeight.bold,
           ),
+          headline2: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 20,
+            color: FSColors.purple,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         hintColor: FSColors.purple,
         shadowColor: FSColors.purple,

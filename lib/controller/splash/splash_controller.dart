@@ -15,41 +15,53 @@ class SplashController extends FSGetXController {
   }
 
   void _validateLogin() async {
-    Future.delayed(const Duration(seconds: 5), () {
-      _isInitialFirst().then((initial) {
-        if (initial) {
-          Get.toNamed('/presentation');
-        } else {
-          _isLogged().then((logged) async {
-            if (logged) {
-              if (TokenJwk.jwk.isEmpty) {
-                if (_user.isEmpty && _pass.isEmpty) {
-                  Get.offAllNamed('/login');
+    Future.delayed(const Duration(seconds: 3), () {
+      _isGuest().then(
+        (guest) {
+          if (guest) {
+            Get.toNamed('/home');
+          } else {
+            _isInitialFirst().then(
+              (initial) {
+                if (initial) {
+                  Get.toNamed('/presentation');
                 } else {
-                  JsonResponseToken response = await postToken(
-                    EndPoint.login,
-                    params: {
-                      'username': _user.trim(),
-                      'password': _pass.trim(),
+                  _isLogged().then(
+                    (logged) async {
+                      if (logged) {
+                        if (TokenJwk.jwk.isEmpty) {
+                          if (_user.isEmpty && _pass.isEmpty) {
+                            Get.offAllNamed('/login');
+                          } else {
+                            JsonResponseToken response = await postToken(
+                              EndPoint.login,
+                              params: {
+                                'username': _user.trim(),
+                                'password': _pass.trim(),
+                              },
+                            );
+                            if (response.statusCode == 200) {
+                              TokenJwk.jwk = response.response!.token!;
+                              Get.offAllNamed('/home');
+                            } else {
+                              Errors().errors(response.statusCode);
+                              Get.offAllNamed('/login');
+                            }
+                          }
+                        } else {
+                          Get.offAllNamed('/home');
+                        }
+                      } else {
+                        Get.offAllNamed('/login');
+                      }
                     },
                   );
-                  if (response.statusCode == 200) {
-                    TokenJwk.jwk = response.response!.token!;
-                    Get.offAllNamed('/home');
-                  } else {
-                    Errors().errors(response.statusCode);
-                    Get.offAllNamed('/login');
-                  }
                 }
-              } else {
-                Get.offAllNamed('/home');
-              }
-            } else {
-              Get.offAllNamed('/login');
-            }
-          });
-        }
-      });
+              },
+            );
+          }
+        },
+      );
     });
   }
 
@@ -63,5 +75,10 @@ class SplashController extends FSGetXController {
   Future<bool> _isInitialFirst() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     return preferences.getBool(Persistence.isInitialFirst) ?? true;
+  }
+
+  Future<bool> _isGuest() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getBool(Persistence.isGuest) ?? false;
   }
 }

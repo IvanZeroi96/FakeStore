@@ -7,6 +7,7 @@ class PresentationController extends FSGetXController {
   void goToHome() async {
     SharedPreferences.getInstance().then((preferences) {
       preferences.setBool(Persistence.isInitialFirst, false);
+      preferences.setBool(Persistence.isGuest, true);
       Get.offAllNamed('/home');
     });
   }

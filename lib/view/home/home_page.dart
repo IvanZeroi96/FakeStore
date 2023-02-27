@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fakestore/controller/home/home_controller.dart';
+import 'package:fakestore/model/colors.dart';
+import 'package:fakestore/model/l10n/l10n.dart';
+import 'package:fakestore/model/products/products.dart';
 import 'package:fakestore/model/utils.dart';
 import 'package:fakestore/view/ui/circular_progress.dart';
 import 'package:fakestore/view/ui/progress_hud.dart';
@@ -7,7 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -63,59 +68,15 @@ class HomePage extends StatelessWidget {
                 id: 'ListProducts',
                 builder: (_) {
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8,
-                        childAspectRatio: 0.7,
-                        mainAxisSpacing: 8,
+                    padding: const EdgeInsets.all(12.0),
+                    child: ListView.separated(
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const SizedBox(
+                        height: 20,
                       ),
                       itemCount: _.products.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                CachedNetworkImage(
-                                  width: double.maxFinite,
-                                  height: 130.0,
-                                  fit: BoxFit.scaleDown,
-                                  imageUrl: _.products[index].image!,
-                                  placeholder: (context, url) => SizedBox(
-                                      width: 20,
-                                      height: 20,
-                                      child: CircularProgress(
-                                        width: 20,
-                                        height: 20,
-                                      )),
-                                  errorWidget: (context, url, error) =>
-                                      Image.asset(
-                                    'assets/images/sinimagen.png',
-                                    height: 30,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                ListTile(
-                                  subtitle: Text(_.products[index].title!,
-                                      style: const TextStyle()
-                                          .copyWith(fontSize: 12)),
-                                  title: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                          '\$${_.products[index].price.toString()}',
-                                          textAlign: TextAlign.right),
-                                      const Divider(),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
+                        return _buildCard(_.products[index], context, _);
                       },
                     ),
                   );
@@ -131,6 +92,103 @@ class HomePage extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildCard(Product item, BuildContext context, HomeController _) {
+    return Container(
+      height: 200,
+      width: double.maxFinite,
+      decoration: BoxDecoration(
+        color: FSColors.cardColor,
+        borderRadius: BorderRadius.circular(
+          25,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 15,
+              bottom: 15,
+              left: 25,
+              child: CircleAvatar(
+                radius: 70,
+                backgroundColor: Colors.white,
+                child: ClipOval(
+                  child: CachedNetworkImage(
+                    width: double.maxFinite,
+                    height: 130.0,
+                    fit: BoxFit.scaleDown,
+                    imageUrl: item.image!,
+                    placeholder: (context, url) => SizedBox(
+                      width: 10,
+                      height: 10,
+                      child: CircularProgress(
+                        width: 10,
+                        height: 10,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Image.asset(
+                      'assets/images/sinimagen.png',
+                      height: 30,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 20,
+              right: 5,
+              left: 170,
+              child: SizedBox(
+                width: double.minPositive,
+                child: Text(
+                  item.title!,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 155,
+              right: 5,
+              left: 170,
+              child: SizedBox(
+                width: double.minPositive,
+                child: Text(
+                  '\$ ${item.price.toString()}',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 140,
+              right: 5,
+              child: OutlinedButton(
+                onPressed: () => _.goToDetailProduct(),
+                child: Text(
+                  S.of(context)!.buy,
+                  style: const TextStyle().copyWith(
+                    color: FSColors.purple,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 0,
+              left: 0,
+              child: IconButton(
+                onPressed: (){},
+                icon: const Icon(
+                  Icons.favorite_outline_outlined,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
