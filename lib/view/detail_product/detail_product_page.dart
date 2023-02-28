@@ -30,6 +30,7 @@ class DetailProductPage extends StatelessWidget {
                       left: 10,
                       right: 10,
                       child: SingleChildScrollView(
+                        physics: const ScrollPhysics(),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -118,7 +119,7 @@ class DetailProductPage extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerRight,
                               child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () => _.goCardBuy(),
                                 child: Text(
                                   S.of(context)!.buy,
                                   style: const TextStyle().copyWith(
