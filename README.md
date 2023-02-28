@@ -52,6 +52,8 @@ fetch('https://fakestoreapi.com/products/category/jewelery')
 
 ## Images
 ![Thumbnail1](assets/thumbnail/thumbnail_1.jpg)
-![Thumbnail2](assets/thumbnail/thumbnail_2.png)
-![Thumbnail3](assets/thumbnail/thumbnail_3.png)
+![Thumbnail2](assets/thumbnail/thumbnail_2.jpg)
+![Thumbnail3](assets/thumbnail/thumbnail_3.jpg)
+![Thumbnail4](assets/thumbnail/thumbnail_4.jpg)
+![Thumbnail5](assets/thumbnail/thumbnail_5.jpg)
 
