@@ -31,7 +31,10 @@ final routes = [
   GetPage(
     name: '/detail_product',
     page: () => const DetailProductPage(),
-    transition: Transition.rightToLeftWithFade,
+    transition: Transition.circularReveal,
+    transitionDuration: const Duration(
+      milliseconds: 50,
+    ),
   ),
   GetPage(
     name: '/error',

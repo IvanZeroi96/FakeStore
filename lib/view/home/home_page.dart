@@ -167,7 +167,7 @@ class HomePage extends StatelessWidget {
               top: 140,
               right: 5,
               child: OutlinedButton(
-                onPressed: () => _.goToDetailProduct(),
+                onPressed: () => _.goToDetailProduct(item.id.toString(),item),
                 child: Text(
                   S.of(context)!.buy,
                   style: const TextStyle().copyWith(
@@ -180,7 +180,7 @@ class HomePage extends StatelessWidget {
               top: 0,
               left: 0,
               child: IconButton(
-                onPressed: (){},
+                onPressed: () {},
                 icon: const Icon(
                   Icons.favorite_outline_outlined,
                 ),

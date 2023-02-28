@@ -53,7 +53,7 @@ class HomeController extends FSGetXController {
     });
   }
 
-  void goToDetailProduct() {
-    Get.toNamed('/detail_product');
+  void goToDetailProduct(String id, Product item) {
+    Get.toNamed('/detail_product', arguments: {'id': id, 'product': item});
   }
 }

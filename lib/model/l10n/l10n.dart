@@ -23,6 +23,9 @@ class S {
       'UserName': 'User name',
       'Password': 'Password',
       'Buy': 'Buy',
+      'Price': 'Price',
+      'Ratings': 'Ratings',
+      'Votes': 'Votes',
     },
     'es': {
       'Register': '¿Todavía no tienes una cuenta? Únete ahora',
@@ -34,6 +37,9 @@ class S {
       'UserName': 'Nombre usuario',
       'Password': 'Contraseña',
       'Buy': 'Comprar',
+      'Price': 'Precio',
+      'Ratings': 'Calificaciones',
+      'Votes': 'Votos',
     },
   };
 
@@ -71,6 +77,18 @@ class S {
 
   String get buy {
     return _localizedValues[locale.languageCode]!['Buy'] ?? '';
+  }
+
+  String get price {
+    return _localizedValues[locale.languageCode]!['Price'] ?? '';
+  }
+
+  String get ratings {
+    return _localizedValues[locale.languageCode]!['Ratings'] ?? '';
+  }
+
+  String get votes {
+    return _localizedValues[locale.languageCode]!['Votes'] ?? '';
   }
 }
 
