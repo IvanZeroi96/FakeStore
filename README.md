@@ -53,9 +53,11 @@ fetch('https://fakestoreapi.com/products/category/jewelery')
 ## Donate
 [![BuyMeACoffee](https://img.shields.io/badge/Buy_Me_A_Coffee-apoya_mi_trabajo-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white&labelColor=101010)](https://www.paypal.com/paypalme/IvanZeroi)
 
-#### Puedes apoyarme haciendo "☆ Star" en el repo o impulsarme a "GitHub Star".
+##Boost
 
-[![GitHub Star](https://img.shields.io/badge/GitHub-Nominar_a_star-yellow?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://stars.github.com/nominate/)
+Puedes apoyarme haciendo "☆ Star" en el repo o impulsarme a "GitHub Star".
+
+[![GitHub Star](https://img.shields.io/badge/GitHub-Nominar-yellow?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://stars.github.com/nominate/)
 
 ## Images
 ![Thumbnail1](assets/thumbnail/thumbnail_1.jpg)
