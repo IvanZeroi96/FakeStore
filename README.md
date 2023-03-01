@@ -50,6 +50,13 @@ fetch('https://fakestoreapi.com/products/category/jewelery')
 ## Authors
 - [@IvanZeroi96](https://github.com/IvanZeroi96)
 
+## Donate
+[![BuyMeACoffee](https://img.shields.io/badge/Buy_Me_A_Coffee-apoya_mi_trabajo-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white&labelColor=101010)](https://www.paypal.com/paypalme/IvanZeroi)
+
+#### Puedes apoyarme haciendo "☆ Star" en el repo o impulsarme a "GitHub Star".
+
+[![GitHub Star](https://img.shields.io/badge/GitHub-Nominar_a_star-yellow?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://stars.github.com/nominate/)
+
 ## Images
 ![Thumbnail1](assets/thumbnail/thumbnail_1.jpg)
 ![Thumbnail2](assets/thumbnail/thumbnail_2.jpg)
