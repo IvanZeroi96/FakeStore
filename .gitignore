@@ -7,9 +7,6 @@ Marketplace
 Explore
  
 @IvanZeroi96 
-SeekopEnterprise
-/
-SeekopMobile
 Private
 Cannot fork because forking is disabled.
 Code
@@ -20,13 +17,7 @@ Projects
 Wiki
 Security
 Insights
-SeekopMobile/.gitignore
-@erickrodriguez21
-erickrodriguez21 Configurando archivo .gitignore
-Latest commit 4eb4303 2 weeks ago
- History
- 1 contributor
-90 lines (72 sloc)  1.11 KB
+FakeStore/.gitignore
 
 build/
 
